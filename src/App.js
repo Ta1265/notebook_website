@@ -420,7 +420,7 @@ class Board extends React.Component {
 		var self = this;
 		return (
 			<div>
-				<h3 class="boarder-title">This your Notebook</h3>
+				<h3 class="boarder-title">This is your Notebook</h3>
 				<div id="newNote-form-wrapper">
 					<form onSubmit={this.createNote} id="form">
 						<div className="flex-wrapper">
