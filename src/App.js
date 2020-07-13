@@ -69,8 +69,7 @@ class Task extends React.Component {
 
 	getTasks() {
 		if (this.state.needInfoUpdate) {
-			var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/get-task/${this.state
-				.task_id}/`;
+			var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/get-task/${this.state.task_id}/`;
 			fetch(url).then((response) => response.json()).then((data) =>
 				this.setState({
 					task_id        : data.id,
@@ -173,7 +172,7 @@ class Note extends React.Component {
 		this.updateTask = this.updateTask.bind(this);
 	}
 	updateTask(task_id, info) {
-		var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/update-task/${task_id}/`;
+		var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/update-task/${task_id}/`;
 
 		fetch(url, {
 			method  : 'POST',
@@ -199,7 +198,7 @@ class Note extends React.Component {
 	deleteItem(task_id) {
 		var task_to_delete = task_id;
 		var csrftoken = this.getCookie('csrftoken');
-		var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/delete-task/${task_to_delete}/`;
+		var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/delete-task/${task_to_delete}/`;
 		var context = {
 			method  : 'DELETE',
 			headers : { 'Content-type': 'application/json', 'X-CSRFToken': csrftoken },
@@ -244,8 +243,7 @@ class Note extends React.Component {
 
 	getTasks() {
 		if (this.state.needTasksUpdate) {
-			var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/list-tasks/${this.state
-				.note_id}/`;
+			var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/list-tasks/${this.state.note_id}/`;
 			fetch(url).then((response) => response.json()).then((data) =>
 				this.setState({
 					tasksList       : data,
@@ -262,7 +260,7 @@ class Note extends React.Component {
 		var nid = this.state.note_id;
 		var complete = false;
 
-		var url = 'http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/create-task/';
+		var url = 'http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/create-task/';
 		console.log('note id =', nid, 'info = ', info, 'complete = ', complete);
 		fetch(url, {
 			method  : 'POST',
@@ -343,7 +341,7 @@ class Board extends React.Component {
 	deleteNote(note_id) {
 		var del = note_id;
 		var csrftoken = this.getCookie('csrftoken');
-		var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/delete-note/${del}/`;
+		var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/delete-note/${del}/`;
 		fetch(url, {
 			method  : 'DELETE',
 			headers : { 'Content-type': 'application/json', 'X-CSRFToken': csrftoken },
@@ -382,8 +380,7 @@ class Board extends React.Component {
 
 	getNotes() {
 		if (this.state.needNotesUpdate)
-			var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/list-notes/${this.state
-				.board_id}/`;
+			var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/list-notes/${this.state.board_id}/`;
 		fetch(url).then((response) => response.json()).then((data) =>
 			this.setState({
 				notesList       : data,
@@ -399,7 +396,7 @@ class Board extends React.Component {
 		var bid = this.state.board_id;
 
 		console.log('title = ', title);
-		var url = 'http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/create-note/';
+		var url = 'http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/create-note/';
 		fetch(url, {
 			method  : 'POST',
 			headers : { 'Content-type': 'application/json', 'X-CSRFToken': csrftoken },
@@ -520,7 +517,7 @@ class App extends React.Component {
 
 		var csrftoken = this.getCookie('csrftoken');
 
-		var url = 'http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/register/';
+		var url = 'http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/register/';
 		fetch(url, {
 			method  : 'POST',
 			headers : { 'Content-type': 'application/json', 'X-CSRFToken': csrftoken },
@@ -551,7 +548,7 @@ class App extends React.Component {
 		console.log(e.target[0].value);
 		console.log(e.target[1].value);
 		var csrftoken = this.getCookie('csrftoken');
-		var url = 'http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/login/';
+		var url = 'http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/login/';
 		fetch(url, {
 			method  : 'POST',
 			headers : { 'Content-type': 'application/json', 'X-CSRFToken': csrftoken },
@@ -609,8 +606,7 @@ class App extends React.Component {
 
 	getBoard() {
 		if (this.state.needGetBoard)
-			var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/get-board/${this.state
-				.user_id}/`;
+			var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/get-board/${this.state.user_id}/`;
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) =>
@@ -625,7 +621,7 @@ class App extends React.Component {
 	createBoard() {
 		var id = this.state.user_id;
 		var csrftoken = this.getCookie('csrftoken');
-		var url = 'http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/create-board/';
+		var url = 'http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/create-board/';
 		fetch(url, {
 			method  : 'POST',
 			headers : { 'Content-type': 'application/json', 'X-CSRFToken': csrftoken },
