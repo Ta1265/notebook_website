@@ -606,8 +606,7 @@ class App extends React.Component {
 
 	getBoard() {
 		if (this.state.needGetBoard)
-			var url = `http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/get-board/${this.state
-				.user_id}/`;
+			var url = `http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/get-board/${this.state.user_id}/`;
 		fetch(url)
 			.then((response) => response.json())
 			.then((data) =>
@@ -622,7 +621,7 @@ class App extends React.Component {
 	createBoard() {
 		var id = this.state.user_id;
 		var csrftoken = this.getCookie('csrftoken');
-		var url = 'http://back-notebook-env.eba-am2s9iym.us-east-1.elasticbeanstalk.com/create-board/';
+		var url = 'http://back-notebook-env-2.us-east-1.elasticbeanstalk.com/create-board/';
 		fetch(url, {
 			method  : 'POST',
 			headers : { 'Content-type': 'application/json', 'X-CSRFToken': csrftoken },
